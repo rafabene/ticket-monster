@@ -30,6 +30,13 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.jboss.arquillian</groupId>
+                <artifactId>arquillian-bom</artifactId>
+                <version>1.1.8.Final</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <!-- JBoss distributes a complete set of Java EE 6 APIs including a Bill 
                 of Materials (BOM). A BOM specifies the versions of a "stack" (or a collection) 
                 of artifacts. We use this here so that we always get the correct versions 
@@ -478,6 +485,28 @@
 		      </plugins>
 		    </build>
 		</profile>
+
+        <profile>
+            <id>docker-test</id>
+            <dependencies>
+                <dependency>
+                  <groupId>org.arquillian.cube</groupId>
+                  <artifactId>arquillian-cube-docker</artifactId>
+                  <version>1.0.0.Alpha5</version>
+                  <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.wildfly</groupId>
+                    <artifactId>wildfly-arquillian-container-remote</artifactId>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.jboss.arquillian.junit</groupId>
+                    <artifactId>arquillian-junit-container</artifactId>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+        </profile>
     </profiles>
     
     <repositories>
